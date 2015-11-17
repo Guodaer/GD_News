@@ -14,6 +14,8 @@
 		B8E2084D1BFAEAAD006E60D0 /* GD_NewsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E2084C1BFAEAAD006E60D0 /* GD_NewsTests.m */; };
 		B8E208581BFAEAAD006E60D0 /* GD_NewsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E208571BFAEAAD006E60D0 /* GD_NewsUITests.m */; };
 		B8E208671BFAEAF9006E60D0 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E208661BFAEAF9006E60D0 /* RootViewController.m */; };
+		B8E208711BFB1642006E60D0 /* unlike@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = B8E208701BFB1642006E60D0 /* unlike@3x.png */; };
+		B8E208731BFB1742006E60D0 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = B8E208721BFB1742006E60D0 /* 5.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		B8E208651BFAEAF9006E60D0 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		B8E208661BFAEAF9006E60D0 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		B8E2086B1BFAECEC006E60D0 /* GDCenterManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDCenterManager.h; sourceTree = "<group>"; };
+		B8E208701BFB1642006E60D0 /* unlike@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "unlike@3x.png"; sourceTree = "<group>"; };
+		B8E208721BFB1742006E60D0 /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 		B8E208261BFAEAAD006E60D0 = {
 			isa = PBXGroup;
 			children = (
+				B8E2086F1BFB1639006E60D0 /* Source */,
 				B8E208311BFAEAAD006E60D0 /* GD_News */,
 				B8E2084B1BFAEAAD006E60D0 /* GD_NewsTests */,
 				B8E208561BFAEAAD006E60D0 /* GD_NewsUITests */,
@@ -137,6 +142,15 @@
 				B8E208591BFAEAAD006E60D0 /* Info.plist */,
 			);
 			path = GD_NewsUITests;
+			sourceTree = "<group>";
+		};
+		B8E2086F1BFB1639006E60D0 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B8E208701BFB1642006E60D0 /* unlike@3x.png */,
+				B8E208721BFB1742006E60D0 /* 5.png */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +256,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8E208711BFB1642006E60D0 /* unlike@3x.png in Resources */,
+				B8E208731BFB1742006E60D0 /* 5.png in Resources */,
 				B8E208421BFAEAAD006E60D0 /* LaunchScreen.storyboard in Resources */,
 				B8E2083F1BFAEAAD006E60D0 /* Assets.xcassets in Resources */,
 			);
@@ -486,6 +502,7 @@
 				B8E2085E1BFAEAAD006E60D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8E2085F1BFAEAAD006E60D0 /* Build configuration list for PBXNativeTarget "GD_NewsTests" */ = {
 			isa = XCConfigurationList;
@@ -494,6 +511,7 @@
 				B8E208611BFAEAAD006E60D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B8E208621BFAEAAD006E60D0 /* Build configuration list for PBXNativeTarget "GD_NewsUITests" */ = {
 			isa = XCConfigurationList;
@@ -502,6 +520,7 @@
 				B8E208641BFAEAAD006E60D0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

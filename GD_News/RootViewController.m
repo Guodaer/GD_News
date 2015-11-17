@@ -23,6 +23,8 @@
 
 @property (nonatomic, strong) UIScrollView *backScrollView;
 
+@property (nonatomic, strong) UIView *unfoldView;
+
 
 @end
 
@@ -155,14 +157,62 @@
         isLeft = NO;
     }
 }
+static int flod = 0;
+- (void)moreBtnClick:(UIButton*)sender {
+    if (flod == 0) {
+        [UIView animateWithDuration:0.4 animations:^{
+
+            _unfoldView.frame = CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64);
+            _unfoldView.backgroundColor = [UIColor yellowColor];
+            [self.view bringSubviewToFront:_unfoldView];
+        } completion:^(BOOL finished) {
+            
+        }];
+        flod = 1;
+    }else{
+        [UIView animateWithDuration:0.3 animations:^{
+            _unfoldView.frame = CGRectMake(0, 64, SCREENWIDTH, 0);
+
+        } completion:^(BOOL finished) {
+            
+        }];
+        flod = 0;
+        
+    }
+    
+    
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [UIView animateWithDuration:0.3 animations:^{
+        _unfoldView.frame = CGRectMake(0, 64, SCREENWIDTH, 0);
+        
+    } completion:^(BOOL finished) {
+        
+    }];
+    flod = 0;
+
+}
 #pragma mark - 选项条
 - (void)createMenu_selected_Items {
-    self.SelectedItemsView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, SCREENWIDTH, 40)];
+    self.SelectedItemsView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 64, SCREENWIDTH-50, 40)];
     _SelectedItemsView.bounces = YES;
-    //    self.SelectedItemsView.delegate = self;
     _SelectedItemsView.showsHorizontalScrollIndicator = NO;
     _SelectedItemsView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:self.SelectedItemsView];
+    
+    UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    moreBtn.frame = CGRectMake(SCREENWIDTH - 50, 64, 50, 40);
+    [moreBtn setImage:[UIImage imageNamed:@"5"] forState:UIControlStateNormal];
+    [self.view addSubview:moreBtn];
+    [moreBtn setImageEdgeInsets:UIEdgeInsetsMake(3, 5, 0, 10)];
+    [moreBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+
+    _unfoldView = [[UIView alloc] init];
+    _unfoldView.frame = CGRectMake(0, 64, SCREENWIDTH, 0);
+    _unfoldView.backgroundColor = [UIColor yellowColor];
+    
+    [self.view addSubview:_unfoldView];
+
     
     CGFloat x = 0;
     CGFloat width = 60;
