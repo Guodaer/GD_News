@@ -87,28 +87,31 @@
     UILabel *lineLabel = [[UILabel alloc] init];
     lineLabel.tag = TitleLineTag;
     
-    for (UIView *view in _SelectedItemsView.subviews) {
-        if (number == view.tag) { //选中
-            UIButton *button = (UIButton*)view;
-            [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-            lineLabel.backgroundColor = [UIColor redColor];
-            
-            lineLabel.frame = CGRectMake(0, button.frame.size.height-1, button.frame.size.width, 1);
-            [button addSubview:lineLabel];
-            [_SelectedItemsView scrollRectToVisible:CGRectMake(60*(number-1000), 0, 60, 40) animated:YES];
-        }
-        else { //没有被选中
-            UIButton *button = (UIButton*)view;
-            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            for (UIView *view1 in button.subviews) {
-                UILabel *label = (UILabel*)view1;
-                if (label.tag == TitleLineTag) {
-                    [label removeFromSuperview];
+    if (old != new) {
+        
+        
+        for (UIView *view in _SelectedItemsView.subviews) {
+            if (number == view.tag) { //选中
+                UIButton *button = (UIButton*)view;
+                [button setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+                lineLabel.backgroundColor = [UIColor redColor];
+                
+                lineLabel.frame = CGRectMake(0, button.frame.size.height-1, button.frame.size.width, 1);
+                [button addSubview:lineLabel];
+                [_SelectedItemsView scrollRectToVisible:CGRectMake(60*(number-1000), 0, 60, 40) animated:YES];
+            }
+            else { //没有被选中
+                UIButton *button = (UIButton*)view;
+                [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                for (UIView *view1 in button.subviews) {
+                    UILabel *label = (UILabel*)view1;
+                    if (label.tag == TitleLineTag) {
+                        [label removeFromSuperview];
+                    }
                 }
             }
         }
     }
-    
     int page = scrollView.contentOffset.x / SCREENWIDTH;
     if (isLeft) {
         if (page >= 3 && page <= _titleArray.count) {
@@ -131,17 +134,13 @@
                 tableView.tag = TableViewTag + page;
                 tableView.delegate = self;
                 tableView.dataSource = self;
-//                tableView.backgroundColor = [UIColor yellowColor];
+                //                tableView.backgroundColor = [UIColor yellowColor];
                 [_backScrollView addSubview:tableView];
                 
             }
             
             
         }
-    }
-    else{
-        
-        NSLog(@"向右");
     }
     
     
@@ -162,7 +161,7 @@ static int flod = 0;
 - (void)moreBtnClick:(UIButton*)sender {
     if (flod == 0) {
         [UIView animateWithDuration:0.4 animations:^{
-
+            
             _unfoldView.frame = CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64);
             _unfoldView.backgroundColor = [UIColor yellowColor];
             [self.view bringSubviewToFront:_unfoldView];
@@ -173,7 +172,7 @@ static int flod = 0;
     }else{
         [UIView animateWithDuration:0.3 animations:^{
             _unfoldView.frame = CGRectMake(0, 64, SCREENWIDTH, 0);
-
+            
         } completion:^(BOOL finished) {
             
         }];
@@ -191,7 +190,7 @@ static int flod = 0;
         
     }];
     flod = 0;
-
+    
 }
 #pragma mark - 选项条
 - (void)createMenu_selected_Items {
@@ -207,13 +206,13 @@ static int flod = 0;
     [self.view addSubview:moreBtn];
     [moreBtn setImageEdgeInsets:UIEdgeInsetsMake(3, 5, 0, 10)];
     [moreBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-
+    
     _unfoldView = [[UIView alloc] init];
     _unfoldView.frame = CGRectMake(0, 64, SCREENWIDTH, 0);
     _unfoldView.backgroundColor = [UIColor yellowColor];
     
     [self.view addSubview:_unfoldView];
-
+    
     
     CGFloat x = 0;
     CGFloat width = 60;
@@ -270,7 +269,7 @@ static int flod = 0;
     
     NSInteger page = sender.tag -1000;
     if (page >= 3 && page <= _titleArray.count) {
-
+        
         NSInteger needCreate = 0;
         for (UIView *view2 in _backScrollView.subviews) {
             if (view2.tag == TableViewTag + page) {
@@ -289,7 +288,7 @@ static int flod = 0;
             tableView.tag = TableViewTag + page;
             tableView.delegate = self;
             tableView.dataSource = self;
-//            tableView.backgroundColor = [UIColor yellowColor];
+            //            tableView.backgroundColor = [UIColor yellowColor];
             [_backScrollView addSubview:tableView];
             
         }
