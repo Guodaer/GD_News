@@ -130,7 +130,8 @@
                 UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake((page)*SCREENWIDTH, 0, SCREENWIDTH, SCREENHEIGHT-64-40)];
                 tableView.tag = TableViewTag + page;
                 tableView.delegate = self;
-                tableView.backgroundColor = [UIColor yellowColor];
+                tableView.dataSource = self;
+//                tableView.backgroundColor = [UIColor yellowColor];
                 [_backScrollView addSubview:tableView];
                 
             }
@@ -269,7 +270,7 @@ static int flod = 0;
     
     NSInteger page = sender.tag -1000;
     if (page >= 3 && page <= _titleArray.count) {
-        NSLog(@"111111");
+
         NSInteger needCreate = 0;
         for (UIView *view2 in _backScrollView.subviews) {
             if (view2.tag == TableViewTag + page) {
@@ -287,7 +288,8 @@ static int flod = 0;
             UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake((page)*SCREENWIDTH, 0, SCREENWIDTH, SCREENHEIGHT-64-40)];
             tableView.tag = TableViewTag + page;
             tableView.delegate = self;
-            tableView.backgroundColor = [UIColor yellowColor];
+            tableView.dataSource = self;
+//            tableView.backgroundColor = [UIColor yellowColor];
             [_backScrollView addSubview:tableView];
             
         }
