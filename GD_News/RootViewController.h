@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RootViewController.h
 //  GD_News
 //
 //  Created by xiaoyu on 15/11/17.
@@ -7,9 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface ViewController : UIViewController
-
+#import "GDCenterManager.h"
+@interface RootViewController : UIViewController
 
 @end
-
