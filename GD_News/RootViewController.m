@@ -7,7 +7,6 @@
 //
 
 #import "RootViewController.h"
-
 #define TitleLineTag  999
 #define TableViewTag 10000
 @interface RootViewController ()<UIScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -24,6 +23,7 @@
 @property (nonatomic, strong) UIScrollView *backScrollView;
 
 @property (nonatomic, strong) UIView *unfoldView;
+
 
 
 @end
@@ -165,19 +165,22 @@ static int flod = 0;
             _unfoldView.frame = CGRectMake(0, 64, SCREENWIDTH, SCREENHEIGHT-64);
             _unfoldView.backgroundColor = [UIColor yellowColor];
             [self.view bringSubviewToFront:_unfoldView];
+
         } completion:^(BOOL finished) {
-            
+//            [self createCollectionView_Items];
+
         }];
         flod = 1;
     }else{
         [UIView animateWithDuration:0.3 animations:^{
             _unfoldView.frame = CGRectMake(0, 64, SCREENWIDTH, 0);
-            
+
         } completion:^(BOOL finished) {
-            
+
+
         }];
         flod = 0;
-        
+
     }
     
     
@@ -202,7 +205,7 @@ static int flod = 0;
     
     UIButton *moreBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     moreBtn.frame = CGRectMake(SCREENWIDTH - 50, 64, 50, 40);
-    [moreBtn setImage:[UIImage imageNamed:@"5"] forState:UIControlStateNormal];
+    [moreBtn setImage:[UIImage imageNamed:@"icon"] forState:UIControlStateNormal];
     [self.view addSubview:moreBtn];
     [moreBtn setImageEdgeInsets:UIEdgeInsetsMake(3, 5, 0, 10)];
     [moreBtn addTarget:self action:@selector(moreBtnClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -212,6 +215,8 @@ static int flod = 0;
     _unfoldView.backgroundColor = [UIColor yellowColor];
     
     [self.view addSubview:_unfoldView];
+    
+
     
     
     CGFloat x = 0;
@@ -308,6 +313,10 @@ static int flod = 0;
     
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
